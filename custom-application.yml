@@ -1,0 +1,8 @@
+version: '3' #version of YML file
+
+services: #each service starts a new continer
+  distro:
+    image: alphine #image downloaded at run time
+    restart: always #container restarts itself (host restart, cont. crash)
+    container_name: Custom_alpine #defines custom container name 
+    entrypoint: tail -f /dev/null #Keeps container running- ongoing command and container will not stop
