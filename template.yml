@@ -1,0 +1,13 @@
+version: '3' #Specifies the Compose file syntax version.
+
+services: #service is the name for a "Container in production"
+  servicename: #container service name
+    image: #optional, specify if build specific
+    command: #optional, relmand CMD specified in image
+    environment: #optional, simlilar to -e in Docker run command
+    volumes: #optional, similar to --mount in docker run
+  servicename2:
+
+volumes: #optional, mounts a linked path on the host machine
+
+networks: #Optional, same as docker network
