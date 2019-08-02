@@ -9,8 +9,28 @@ services: #each service starts a new continer
 
   database:
     image: postgres:latest
+    restart: always
     container_name: postgres_db
     ports:
       - "5432:5432"
     volumes:
       - ../dump:/tmp/
+  web:
+    image: nginx
+    restart: always
+    container_name: nginx_webComposed
+    ports: 
+      - "8080:80"
+    volumes:
+      - ./mysite.template:/etc/nginx/conf.d/mysite.template
+    environment:
+      - NGINX_HOST=sample.com
+      - NGINX_port=80
+    links: #restarts if one of the following services restart
+      - database:db
+      - distro
+
+volumes:
+  data:
+    external: true #tells docker compose tro use a pre-existiong external data volume
+
