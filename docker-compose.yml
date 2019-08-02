@@ -1,6 +1,6 @@
 version: '3' #version of YML file
 
-service:
+services:
   db:
     image: mysql:5.7
     volumes:
@@ -13,7 +13,7 @@ service:
       MYSQL_PASSWORD: wordpress
   
   wordpress:
-    depend-on:
+    depends-on:
       -db #make container depends on db container
     image: wordpress:latest
     ports:
